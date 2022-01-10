@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Ajax</title>
+</head>
+<body>
+    <header>
+        <h1>GitHub API Fetcher</h1>
+        <h2>Manipulation en JS des données de l'API GitHub</h2>
+        <nav><ul>
+            <li><button id="load-api-fetcher">api fetcher</button></li>
+            <li><button id="load-card-generator">card generator</button></li>
+            <li><button id="load-hub">hub</button></li>
+        </ul></nav>
+    </header>
+    
+    <main>
+        <article id="main">
+            <header>
+                <h3></h3>
+
+                <div class="search-bar">
+                    <input type="text">
+                    <button>search</button>
+                </div>
+            </header>
+
+            <section id="main-section"></section>
+        </article>
+
+        <section id="card" class="hidden">
+            <div id="card-left">
+                <div id="avatar">
+                    <figure>
+                        <img src="" alt="">
+                    </figure>
+                </div>
+
+                <div id="under-avatar">
+                    <p>Created at <span id="creation-date"></span></p>
+                    <p>Last up at <span id="update-date"></span></p>
+                </div>
+            </div>
+
+            <div id="card-right">
+                <header>
+                    <h1 id="name">Name</h1>
+                    <h3 id="location">City</h3>
+                </header>
+                <hr>
+                <div>
+                    <p>repos: <span id="public_repos"> 42</span></p>
+                </div>
+                <!-- <div>
+                    <p>caracters: <span> 3700</span></p>
+                </div> -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- <p>see <a href="https://github.com/Gin-is-not-real">GitHub</a></p> -->
+
+
+    <script src="js/scriptLoader.js" async></script>
+</body>
+</html>
