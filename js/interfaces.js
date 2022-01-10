@@ -5,10 +5,23 @@ function loadCardGenerator() {
     _article.id='card-generator';
     _articleTitle.textContent = 'Card Generator';
 
-    _searchBarBtn.addEventListener('click', function() {
+    _searchBarBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+
         if(_searchBarInput.value !== undefined) {
             USER_NAME = _searchBarInput.value;
-            fetchAndCallback(getUserRoute(USER_NAME), createCard);
+
+            if(USER === undefined || USER.name !== USER_NAME) {
+
+                fetchAndInitObject(getUserReposRoute(USER_NAME), USER_REPOS)
+                .then(repos => getTotalLanguages(repos))
+                .then(l => console.log(l))
+                // .then(langs => fetchAndInitObject(getUserRoute(USER_NAME), USER))
+                // .then(user => createCard(user));
+            }
+            else {
+                createCard(USER);
+            }
         }
     })
 }
@@ -18,11 +31,20 @@ function loadMyHub() {
     _article.id='hub';
     _articleTitle.textContent = 'My Hub';
 
-    _searchBarBtn.addEventListener('click', function() {
+    _searchBarBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+
         if(_searchBarInput.value !== undefined) {
             USER_NAME = _searchBarInput.value;
             LIST_TO_LOAD = PROPLIST_USER;
-            fetchAndCallback(getUserRoute(USER_NAME), displayPropList);
+
+            if(USER === undefined || USER.name !== USER_NAME) {
+                fetchAndInitObject(getUserRoute(USER_NAME), USER)
+                .then(r => displayPropList(r));
+            }
+            else {
+                displayPropList(USER);
+            }
         }
     })
 }
@@ -34,7 +56,9 @@ function loadApiExplorer() {
     _article.id='api-explorer';
     _articleTitle.textContent = 'Api Explorer';
     
-    _searchBarBtn.addEventListener('click', function() {
+    _searchBarBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+
         if(_searchBarInput.value !== undefined) {
             USER_NAME = _searchBarInput.value;
             fetchAndDisplay(getUserRoute(USER_NAME));

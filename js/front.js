@@ -28,6 +28,7 @@ let _cardNbrRepos = _cardSection.querySelector('#public_repos');
 //FRONT
 
 function createCard(obj) {
+    console.log()
     _cardAvatar.src = obj.avatar_url;
     _cardCreationDate.textContent = formatDate(new Date(obj.created_at));
     _cardLastUpDate.textContent = formatDate(new Date(obj.updated_at));
@@ -39,7 +40,6 @@ function createCard(obj) {
     _section.appendChild(_cardSection); 
     _cardSection.classList.remove('hidden');
 }
-
 
 
 

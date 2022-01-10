@@ -6,7 +6,9 @@ let myHeaders = new Headers();
 myHeaders.append('User-Agent', 'Gin-is-not-real');
 
 let USER_NAME;
+
 let USER;
+let USER_REPOS;
 
 /////////////////////////////////////////////
 //PROPERTIES LIST
@@ -21,5 +23,7 @@ let LIST_TO_LOAD = [];
 function getUserRoute(username) {
     return API_URL + '/users/' + username;
 }
-
+function getUserReposRoute(username) {
+    return API_URL + '/users/' + username + '/repos';
+}
 
