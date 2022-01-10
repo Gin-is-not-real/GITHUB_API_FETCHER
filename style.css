@@ -1,23 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Gotu&display=swap');
+
 html {
     --bg-1: #0D1117;
     --bg-2: #13233A;
     --bg-3: rgba(24, 26, 37, 0.274);
     --bor-1: rgba(42, 40, 49, 0.479);
     --col-1: #989FA7;
+    --col-2: rgb(61, 125, 213);
     box-sizing: border-box; 
     background-color:var(--bg-1);
+    font-family: 'Gotu', sans-serif;
+
+    font-size: 12pt;
 }
 html * {
     margin: 0; 
     padding: 0;
     color: var(--col-1);
 }
+p {
+    font-size: 0.8rem;
+}
 button, input {
     color: var(--bg-1);
-    padding: 2px 4px;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+a {
+    color: var(--col-2);
 }
 header, article, section {
-    padding: 5px
+    padding: 5px;
 }
 div {
     padding: 2px
@@ -38,10 +51,10 @@ body > header {
     background-color:var(--bg-3);
     min-height: 100px;
     display: grid;
+    grid-template-rows: 0.6fr 0.6fr 1fr;
+    color: var(--col-2);
 }
-body header {
-    grid-row: 1;
-}
+
 body>header nav {
     align-self: flex-end;
     display: flex;
@@ -69,7 +82,9 @@ section#card {
 section#card a {
     color: var(--c);
 }
-
+section#card h1 {
+    font-size: 1.5rem;
+}
 #card-left {
     border: 1px solid var(--c);
     width: var(--avatar-size);
