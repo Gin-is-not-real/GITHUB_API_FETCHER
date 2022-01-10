@@ -35,12 +35,22 @@ function createCard(obj) {
     _cardLocation.textContent = obj.location;
     _cardNbrRepos.textContent = obj.public_repos;
 
+    displayTotalLanguages(obj);
+
     _cardSection.remove();
     _section.appendChild(_cardSection); 
     _cardSection.classList.remove('hidden');
 }
 
+function displayTotalLanguages(obj) {
+    let langs = obj.totalLanguages;
+    console.log(typeof langs, langs);
 
+    langs.forEach(l => {
+        console.log(l.language)
+    })
+
+}
 
 function displayExplorerPage(obj, url) {
     _section.innerHTML = '<header><h3><a href="' + url + '">' + url + '</a></h3></header>';
