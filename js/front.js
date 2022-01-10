@@ -2,7 +2,7 @@
 //DOM
 let _main = document.querySelector('main');
 
-let _btnLoadFetcher = document.querySelector('#load-api-fetcher');
+let _btnLoadFetcher = document.querySelector('#load-api-explorer');
 let _btnLoadHub = document.querySelector('#load-hub');
 let _btnLoadCardGenerator = document.querySelector('#load-card-generator');
 
@@ -28,7 +28,6 @@ let _cardNbrRepos = _cardSection.querySelector('#public_repos');
 //FRONT
 
 function createCard(obj) {
-    console.log()
     _cardAvatar.src = obj.avatar_url;
     _cardCreationDate.textContent = formatDate(new Date(obj.created_at));
     _cardLastUpDate.textContent = formatDate(new Date(obj.updated_at));
