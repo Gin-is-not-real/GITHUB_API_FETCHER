@@ -10,19 +10,7 @@ function loadCardGenerator() {
 
         if(_searchBarInput.value !== undefined) {
             USER_NAME = _searchBarInput.value;
-
             fetchUserData(USER_NAME);
-
-            // if(USER === undefined || USER.name !== USER_NAME) {
-            //     fetchAndInitObject(getUserReposRoute(USER_NAME), USER_REPOS)
-            //     .then(repos => getTotalLanguages(repos))
-            //     .then(l => console.log(l))
-            //     // .then(langs => fetchAndInitObject(getUserRoute(USER_NAME), USER))
-            //     // .then(user => createCard(user));
-            // }
-            // else {
-            //     createCard(USER);
-            // }
         }
     })
 }

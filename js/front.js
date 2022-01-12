@@ -36,20 +36,52 @@ function createCard(obj) {
     _cardNbrRepos.textContent = obj.public_repos;
 
     displayTotalLanguages(obj);
-
     _cardSection.remove();
     _section.appendChild(_cardSection); 
     _cardSection.classList.remove('hidden');
 }
 
-function displayTotalLanguages(obj) {
-    let langs = obj.totalLanguages;
-    console.log(typeof langs, langs);
+/**
+ * 
+ * @param {Array} lang 
+ */
+function displayTotalLanguages(lang) {
+    let langs = lang;
+    console.log(langs.constructor.name, langs.length, langs);
 
-    langs.forEach(l => {
-        console.log(l.language)
-    })
+    if(langs.constructor.name !== 'Object') {
+        langs.forEach(l => {
+            console.log(l.language)
+        })
+    }
+    else {
+        for (const l in langs) {
+            if (langs.hasOwnProperty(l)) {
+                const value = langs[l];
+                console.log(value);
+            }
+        }
+    }
+}
 
+
+function displayTotalLanguages(lang) {
+    let langs = lang;
+    console.log(langs.constructor.name, langs.length, langs);
+
+    if(langs.constructor.name !== 'Object') {
+        langs.forEach(l => {
+            console.log(l.language)
+        })
+    }
+    else {
+        for (const l in langs) {
+            if (langs.hasOwnProperty(l)) {
+                const value = langs[l];
+                console.log(value);
+            }
+        }
+    }
 }
 
 function displayExplorerPage(obj, url) {

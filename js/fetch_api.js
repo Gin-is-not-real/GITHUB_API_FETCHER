@@ -14,32 +14,30 @@ loadCardGenerator();
 ////////////////////////////////////////
 //FETCH
 function getTotalLanguages(repos) {
-    return new Promise(function(resolve) {
-        let languages = [];
-        let langObjs = [];
-    
-        repos.forEach(r => {
-            let langUrl = r.languages_url;
-    
-            fetch(langUrl, {'headers': myHeaders})
-            .then(response => response.json())
-            .then(langs => {
-                for (const lang in langs) {
-                    let value = parseInt(langs[lang]);
+    let languages = [];
+    let langObjs = [];
 
-                    if(languages.includes(lang)) {
-                        let i = languages.indexOf(lang);
-                        langObjs[i].chars += value;
-                    }
-                    else {
-                        languages.push(lang);
-                        langObjs.push({language: lang, chars: value});
-                    }
+    repos.forEach(r => {
+        let langUrl = r.languages_url;
+
+        fetch(langUrl, {'headers': myHeaders})
+        .then(response => response.json())
+        .then(langs => {
+            for (const lang in langs) {
+                let value = parseInt(langs[lang]);
+
+                if(languages.includes(lang)) {
+                    let i = languages.indexOf(lang);
+                    langObjs[i].chars += value;
                 }
-            });
-        })
-        resolve(langObjs);
+                else {
+                    languages.push(lang);
+                    langObjs.push({language: lang, chars: value});
+                }
+            }
+        });
     })
+    return langObjs;
 }
 
 let test = [
@@ -51,6 +49,7 @@ let test = [
 ];
 sortLangages(test);
 
+
 function sortLangages(languages) {
     console.log(typeof languages, languages)
 
@@ -58,19 +57,24 @@ function sortLangages(languages) {
         return b.chars - a.chars;
     })
     
-    console.log('ordered: ', ordered)
+    console.log('sorted array: ', ordered)
     return ordered;
 }
+
 
 async function fetchUserData(username) {
         let user = new Object();
         user = await fetchAndInitObject(getUserRoute(username));
         user.repos = await fetchAndInitObject(getUserReposRoute(username));
         user.totalLanguages = await getTotalLanguages(user.repos);
+        console.log(user.totalLanguages);
+        // ne fonctionne pas
         user.totalLanguages = sortLangages(user.totalLanguages);
+        console.log(user.totalLanguages);
 
         USER = user;
         createCard(user);
+        displayTotalLanguages(user.totalLanguages);        
 }
 
 
@@ -85,12 +89,6 @@ async function fetchAndInitObject(url, obj) {
     })
 }
 
-
-function fetchAndCallback(url, cb) {
-    fetch(url, {'headers': myHeaders})
-    .then(response => response.json())
-    .then(response => cb(response))
-}
 
 /**
  * Fetch data at url, parse it on json and display it on html by calling display()
