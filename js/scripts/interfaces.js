@@ -1,5 +1,12 @@
 ///////////////////////////////////////////////////////
 //INTERFACES
+/**
+ * Function for "load" the choosen script by adapt html (clear inner html, change id, texts) and change event of searchbar
+ * 
+ * @function loadCardGenerator()
+ * @function loadMyHub()
+ * @function loadApiExplorer()
+ */
 function loadCardGenerator() {
     _section.innerHTML = '';
     _article.id='card-generator';

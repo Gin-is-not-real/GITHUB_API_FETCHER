@@ -1,3 +1,10 @@
+/**
+ * Dom vars and functions
+ * 
+ * @function createCard(obj)
+ * @function displayExplorerPage(obj, url)
+ */
+
 //////////////////////////////////////////////
 //DOM
 let _main = document.querySelector('main');
@@ -39,8 +46,6 @@ function createCard(obj) {
     _section.appendChild(_cardSection); 
     _cardSection.classList.remove('hidden');
 }
-
-
 
 
 function displayExplorerPage(obj, url) {
