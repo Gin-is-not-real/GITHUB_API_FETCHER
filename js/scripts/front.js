@@ -34,7 +34,13 @@ let _cardNbrRepos = _cardSection.querySelector('#public_repos');
 ///////////////////////////////////////////////////////
 //FRONT
 
+/**
+ * Generate card from user object, construct from API data. Fill the hidden section#card with user properties and display it
+ * @param {Object} obj user object
+ */
 function createCard(obj) {
+    _section.innerHTML = '';
+
     _cardAvatar.src = obj.avatar_url;
     _cardCreationDate.textContent = formatDate(new Date(obj.created_at));
     _cardLastUpDate.textContent = formatDate(new Date(obj.updated_at));
@@ -47,7 +53,11 @@ function createCard(obj) {
     _cardSection.classList.remove('hidden');
 }
 
-
+/**
+ * Change section header by adding link to actual API route, and create each data line display by loop on the object passed in parameter.
+ * @param {} obj 
+ * @param {URL} url API data url
+ */
 function displayExplorerPage(obj, url) {
     _section.innerHTML = '<header><h3><a href="' + url + '">' + url + '</a></h3></header>';
 
@@ -59,18 +69,27 @@ function displayExplorerPage(obj, url) {
     }
 }
 
+/**
+ * Display JSON json in form as couple key-value. Element created for representing value depending on type of data value, like as links for websites and API routes urls.
+ * @param {JSON} json JSON data 
+ */
 function displayPropList(json) {
     _section.innerHTML = '';
-    let user = createObject(json, LIST_TO_LOAD);
+    let obj = createObject(json, LIST_TO_LOAD);
 
-    for (const prop in user) {
-        if (user.hasOwnProperty(prop)) {
-            let container = createListLine(prop, user[prop]);
+    for (const prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+            let container = createListLine(prop, obj[prop]);
             _section.appendChild(container);
         }
     }
 }
 
+/**
+ * Format a Date in String to be displayed 
+ * @param {Data} date Date to format
+ * @returns {String}
+ */
 function formatDate(date) {
     let formated = date.toDateString();
     let sliced = formated.slice(0, 4);
@@ -92,6 +111,7 @@ function createListLine(prop, value) {
     //creer le container
     let container = document.createElement('div');
     container.style = 'display:flex;gap:10px;';
+
     //affiche la clé
     let span = document.createElement('p');
     span.className = 'span';

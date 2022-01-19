@@ -13,9 +13,10 @@ function loadScript(src) {
 }
 
 loadScript("js/global.js")
-.then(front => loadScript("js/front.js", front))
-.then(front => loadScript("js/interfaces.js", front))
-.then(fetch_api => loadScript("js/fetch_api.js", fetch_api))
+.then(front => loadScript("js/scripts/front.js", front))
+.then(interfaces => loadScript("js/scripts/interfaces.js", interfaces))
+.then(fetch_api => loadScript("js/scripts/fetch_api.js", fetch_api))
+.then(main => loadScript("js/main.js", main))
 .catch(alert);
 
 

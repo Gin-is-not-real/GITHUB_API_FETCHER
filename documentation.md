@@ -16,7 +16,7 @@
 
 - When user run the search, **fetch_api.js** functions request an url with fetch(), sometimes adding headers or parameters, that directly fetch data from API. They process the answer after receiving it (Promise of fetch()), and generally call a function from **front.js**.
 
-- **front.js** contains dom vars and function for create the DOM according to script, creating its elements fill with information from objects, and fll the innerHtml or append created nodes. 
+- **front.js** contains dom vars and functions for create the DOM according to script, creating its elements fill with information from objects, and fill the innerHtml or append created nodes. Dom created is append on html section#main-section.
 -----------------------------------------------------------
 ## FILE STRUCTURE AND FUNCTIONS
 ### index
